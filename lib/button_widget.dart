@@ -6,10 +6,12 @@ class ButtonWidget extends StatelessWidget {
   final Color backgroundColour;
   final Color colour;
   final double? width;
+  final Icon icon;
 
   const ButtonWidget({
     required this.text,
     required this.onClicked,
+    required this.icon,
     this.colour = Colors.white,
     this.backgroundColour = Colors.black,
     this.width
@@ -19,12 +21,13 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
+        icon: icon,
         style: ElevatedButton.styleFrom(
           primary: backgroundColour,
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical:  16),
+          padding: EdgeInsets.symmetric(horizontal: 22, vertical:  16),
         ),
-        child: Text(
+        label: Text(
           text,
           style: TextStyle(fontSize: 20, color: colour),
         ),

@@ -41,9 +41,9 @@ class _MainPageState extends State<MainPage> {
     if (reset) {
       resetTimer();
     }
-    timer = Timer.periodic(Duration(milliseconds: 10), (_) {
+    timer = Timer.periodic(Duration(milliseconds: 20), (_) {
       if (seconds > 0) {
-        setState(() => seconds -= 10);
+        setState(() => seconds -= 20);
       } else {
         stopTimer(reset: false);
       }
@@ -84,20 +84,23 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ButtonWidget(
+                icon: Icon(isRunning ? Icons.pause : Icons.play_arrow, color: Colors.blue.shade100,),
                   text: isRunning ? 'Pause' : 'Resume',
-                  width: 150,
+                  width: 160,
                   onClicked: () {
                     isRunning ? stopTimer(reset: false) : startTimer(reset: false);
                   }),
               SizedBox(width: 10.0,),
               ButtonWidget(
+                icon: Icon(Icons.stop, color: Colors.blue.shade100,),
                 text: 'Cancel',
-                width: 150,
+                width: 160,
                 onClicked: stopTimer,
               ),
             ],
           )
         : ButtonWidget(
+            icon: Icon(Icons.play_arrow, color: Colors.blue.shade200,),
             text: 'Start Timer!',
             colour: Colors.black87,
             backgroundColour: Colors.white,
